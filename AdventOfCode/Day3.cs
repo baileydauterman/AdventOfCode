@@ -4,6 +4,7 @@ using System.Linq;
 using System.Buffers;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net;
 
 namespace AdventOfCode
 {
@@ -138,20 +139,21 @@ namespace AdventOfCode
         public static int[] ParseDataPart2()
         {
             var data = ReadTxtToDictionary("C:/Users/bailey.dauterman/source/repos/AdventOfCode/AdventOfCode/Day3.txt");
-            var co2scrubber = new Dictionary<int, string[]>();
-            var oxygenGenerator = new Dictionary<int, string[]>();
+            var co2scrubber = new Dictionary<int, Object[]>();
+            var oxygenGenerator = new Dictionary<int, Object[]>();
             int[] output = new int[12];
             int[] output2 = new int[2];
             string ogTemp = "";
             string co2Temp = "";
             char zero = (char)48;
+            char one = (char)49;
             foreach (var line in data)
             {
                 co2scrubber.Add(line.Key, line.Value);
                 oxygenGenerator.Add(line.Key, line.Value);
-                for (int i = 0; i < line.Value[0].Length; i++)
+                for (int i = 0; i < line.Value[0].ToString().Length; i++)
                 {
-                    var temp = (char)line.Value[0][i];
+                    var temp = (char)line.Value[0].ToString()[i];
                     if (temp.Equals(zero))
                     {
                         output[i]--;
@@ -167,60 +169,75 @@ namespace AdventOfCode
             {
                 if(output[i] < 0)
                 {
-                    output[i] = 0;
-                    ogTemp += (char)48;
-                    co2Temp += (char)49;
+                    ogTemp += zero;
+                    co2Temp += one;
                 }
                 else
                 {
-                    output[i] = 1;
-                    ogTemp += (char)49;
-                    co2Temp += (char)48;
+                    ogTemp += one;
+                    co2Temp += zero;
                 }
 
                 foreach(var key in oxygenGenerator.Keys)
                 {
-                    if (!oxygenGenerator[key][0].StartsWith(ogTemp))
+                    if (oxygenGenerator[key][0].ToString().StartsWith(ogTemp))
                     {
-                        oxygenGenerator.Remove(key);
+                        oxygenGenerator[key][1] = Convert.ToInt32(oxygenGenerator[key][1]) + 1;
                     }
                 }
 
                 foreach(var key in co2scrubber.Keys)
                 {
-                    if (!co2scrubber[key][0].StartsWith(co2Temp) && co2scrubber.Count() >= 2)
+                    if (co2scrubber[key][0].ToString().StartsWith(co2Temp))
                     {
-                        co2scrubber.Remove(key);
+                        co2scrubber[key][1] = Convert.ToInt32(co2scrubber[key][1]) + 1;
                     }
                 }
                 
                 
             }
 
-            output2[0] = Convert.ToInt32(gamma, 2);
-            output2[1] = Convert.ToInt32(epsilon, 2);
+            //output2[0] = Convert.ToInt32(oxygenGenerator.ElementAt(0).Value[0], 2);
+            //output2[1] = Convert.ToInt32(co2scrubber.ElementAt(0).Value[0], 2);
+            // more than 742900
             return output2;
         }
 
-        private static Dictionary<int,string[]> ReadTxtToDictionary( string filePath)
+        private static Dictionary<int,Object[]> ReadTxtToDictionary( string filePath )
         {
-            Dictionary<int, string[]> d = new Dictionary<int, string[]>();
+            Dictionary<int, Object[]> d = new Dictionary<int, Object[]>();
             int lineCount = 0;
 
             using (var sr = new StreamReader(filePath))
             {
                 string line = null;
-
-                // while it reads a key
-                while ((line = sr.ReadLine()) != null)
+                while((line = sr.ReadLine()) != null)
                 {
-                    // add the key and whatever it 
-                    // can read next as the value
-                    d.Add(lineCount++, new string[2]{ line, String.Empty });
+                    d.Add(lineCount++, new Object[2]{ line, 0 });
                 }
             }
 
             return d;
+        }
+
+        // just a thought to not have to download all the data
+        // returning 400 error code as of now
+        public static async Task<string> GetWebData( string uri )
+        {
+            using var client = new HttpClient();
+            client.DefaultRequestHeaders.Add("User-Agent", "C# console program");
+            var response = await client.GetAsync(uri);
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+
+            //string text = String.Empty;
+            //using (StreamReader reader = new StreamReader(stream))
+            //{
+            //    text = reader.ReadToEnd();
+            //}
+
+            return responseBody;
+
         }
     }
 }

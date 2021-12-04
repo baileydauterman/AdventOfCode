@@ -21,8 +21,5 @@ Console.WriteLine("########### Day 3 ##############");
 var day3 = Day3.ParseDataPart1();
 Console.WriteLine($"Increases (2.1): ([ {day3[0]}, {day3[1]} ])");
 var day31 = Day3.ParseDataPart2();
-//foreach(var day in day31)
-//{
-//    Console.WriteLine($"{day.Key}\t: {day.Value}");
-//}
+Console.WriteLine($"Increases (2.1): {day31[0] * day31[1]} ([ {day31[0]}, {day31[1]} ])");
 Console.WriteLine();
