@@ -53,9 +53,9 @@ namespace AdventOfCode
            
         // Use the binary numbers in your diagnostic report to calculate the gamma rate and epsilon rate, then multiply them together.What is the
         // power consumption of the submarine? (Be sure to represent your answer in decimal, not binary.)
-        public static int[] ParseDataPart1()
+        public static int[] BinaryDiagnosticPart1()
         {
-            var data = File.ReadLines("C:/Users/bailey.dauterman/source/repos/AdventOfCode/AdventOfCode/Day3.txt");
+            var data = File.ReadLines("../../../Day3/input.txt");
             int[] output = new int[12];
             int[] output2 = new int[2];
             string gamma = "";
@@ -136,108 +136,69 @@ namespace AdventOfCode
         
          // Use the binary numbers in your diagnostic report to calculate the oxygen generator rating and CO2 scrubber rating, then multiply them together.What is
          // the life support rating of the submarine? (Be sure to represent your answer in decimal, not binary.)
-        public static int[] ParseDataPart2()
+        public static int[] BinaryDiagnosticPart2()
         {
-            var data = ReadTxtToDictionary("C:/Users/bailey.dauterman/source/repos/AdventOfCode/AdventOfCode/Day3.txt");
-            var co2scrubber = new Dictionary<int, Object[]>();
-            var oxygenGenerator = new Dictionary<int, Object[]>();
-            int[] output = new int[12];
-            int[] output2 = new int[2];
-            string ogTemp = "";
-            string co2Temp = "";
-            char zero = (char)48;
-            char one = (char)49;
-            foreach (var line in data)
+            var input = File.ReadAllLines("../../../Day3/input.txt").ToList();
+
+            return new int[2] { CalculateC02(input), CalculateOxygen(input) };
+        }
+
+        public static int CalculateOxygen( List<string>input)
+        {
+            var oxygenInput = input.ToList();
+            int[] oxygen = new int[input.Count];
+
+            for (int i = 0; i < oxygen.Length; i++)
             {
-                co2scrubber.Add(line.Key, line.Value);
-                oxygenGenerator.Add(line.Key, line.Value);
-                for (int i = 0; i < line.Value[0].ToString().Length; i++)
-                {
-                    var temp = (char)line.Value[0].ToString()[i];
-                    if (temp.Equals(zero))
-                    {
-                        output[i]--;
-                    }
-                    else
-                    {
-                        output[i]++;
-                    }
-                }
+                var columnList = oxygenInput.Select(x => int.Parse(x[i].ToString())).ToList();
+                oxygen[i] = columnList.Where(x => x == 1).Count() >= columnList.Where(x => x == 0).Count() ? 1 : 0;
+                oxygenInput.RemoveAll(x => x[i].ToString() != oxygen[i].ToString());
             }
 
-            for(int i = 0; i < output.Length; i++)
+            return Convert.ToInt32(input[0], 2);
+        }
+
+        public static int CalculateC02(List<string> input)
+        {
+            var co2Input = input.ToList();
+            int[] coTwo = new int[co2Input[1].Length];
+            int i = 0;
+            // CO2
+            while (co2Input.Count() > 1)
             {
-                if(output[i] < 0)
+                var columnList = co2Input.Select(x => int.Parse(x[i].ToString())).ToList();
+                int ones = columnList.Where(x => x == 1).Count();
+                int zeros = columnList.Where(x => x == 0).Count();
+
+                if (ones < zeros)
                 {
-                    ogTemp += zero;
-                    co2Temp += one;
+                    coTwo[i] = 1;
                 }
                 else
                 {
-                    ogTemp += one;
-                    co2Temp += zero;
+                    coTwo[i] = 0;
                 }
-
-                foreach(var key in oxygenGenerator.Keys)
-                {
-                    if (oxygenGenerator[key][0].ToString().StartsWith(ogTemp))
-                    {
-                        oxygenGenerator[key][1] = Convert.ToInt32(oxygenGenerator[key][1]) + 1;
-                    }
-                }
-
-                foreach(var key in co2scrubber.Keys)
-                {
-                    if (co2scrubber[key][0].ToString().StartsWith(co2Temp))
-                    {
-                        co2scrubber[key][1] = Convert.ToInt32(co2scrubber[key][1]) + 1;
-                    }
-                }
-                
-                
+                co2Input.RemoveAll(x => x[i].ToString() != coTwo[i].ToString());
+                i++;
             }
 
-            //output2[0] = Convert.ToInt32(oxygenGenerator.ElementAt(0).Value[0], 2);
-            //output2[1] = Convert.ToInt32(co2scrubber.ElementAt(0).Value[0], 2);
-            // more than 742900
-            return output2;
+            return Convert.ToInt32(co2Input[0], 2);
         }
 
-        private static Dictionary<int,Object[]> ReadTxtToDictionary( string filePath )
+        private static Dictionary<string,int> ReadTextToDictionary( string filePath )
         {
-            Dictionary<int, Object[]> d = new Dictionary<int, Object[]>();
-            int lineCount = 0;
+            Dictionary<string, int> d = new Dictionary<string, int>();
 
             using (var sr = new StreamReader(filePath))
             {
                 string line = null;
-                while((line = sr.ReadLine()) != null)
+                while(( line = sr.ReadLine()) != null)
                 {
-                    d.Add(lineCount++, new Object[2]{ line, 0 });
+                    d.Add(line, 0);
                 }
             }
 
             return d;
-        }
-
-        // just a thought to not have to download all the data
-        // returning 400 error code as of now
-        public static async Task<string> GetWebData( string uri )
-        {
-            using var client = new HttpClient();
-            client.DefaultRequestHeaders.Add("User-Agent", "C# console program");
-            var response = await client.GetAsync(uri);
-            response.EnsureSuccessStatusCode();
-            string responseBody = await response.Content.ReadAsStringAsync();
-
-            //string text = String.Empty;
-            //using (StreamReader reader = new StreamReader(stream))
-            //{
-            //    text = reader.ReadToEnd();
-            //}
-
-            return responseBody;
-
         }
     }
 }

@@ -38,10 +38,10 @@ namespace AdventOfCode
 {
     internal class Day2
     {
-        public static int[] ParseDataPart1()
+        public static int[] DivePart1()
         {
             int[] position = new int[] { 0, 0 };
-            var data = File.ReadLines("C:/Users/bailey.dauterman/source/repos/AdventOfCode/AdventOfCode/Day2.txt");
+            var data = File.ReadLines("../../../Day2/input.txt");
             string temp;
 
             foreach (var line in data)
@@ -95,10 +95,10 @@ namespace AdventOfCode
 //      Using this new interpretation of the commands, calculate the horizontal position and depth you would have after following the planned
 //      course.What do you get if you multiply your final horizontal position by your final depth?
 
-        public static int[] ParseDataPart2()
+        public static int[] DivePart2()
         {
             int[] position = new int[] { 0, 0, 0 };
-            var data = File.ReadLines("C:/Users/bailey.dauterman/source/repos/AdventOfCode/AdventOfCode/Day2.txt");
+            var data = File.ReadLines("../../../Day2/input.txt");
 
             foreach (var line in data)
             {

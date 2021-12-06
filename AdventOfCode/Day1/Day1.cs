@@ -59,9 +59,9 @@ namespace AdventOfCode
     internal class Day1
     {
 
-        public static int ParseDataPart1()
+        public static int SonarSweepPart1()
         {
-            var data = File.ReadLines("C:/Users/bailey.dauterman/source/repos/AdventOfCode/AdventOfCode/Day1.txt");
+            var data = File.ReadLines("../../../Day1/input.txt");
             int increase = 0;
             int total = 0;
             int temp = 0;
@@ -124,9 +124,9 @@ namespace AdventOfCode
         // In this example, there are 5 sums that are larger than the previous sum.
 
         // Consider sums of a three-measurement sliding window.How many sums are larger than the previous sum?
-        public static int ParseDataPart2()
+        public static int SonarSweepPart2()
         {
-            var data = File.ReadLines("C:/Users/bailey.dauterman/source/repos/AdventOfCode/AdventOfCode/Day1.txt");
+            var data = File.ReadLines("../../../Day1/input.txt");
             Queue<int> q = new Queue<int>();
             int windowSize = 3;
             int slidingSum = 0;
