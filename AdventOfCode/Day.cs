@@ -8,10 +8,12 @@ namespace AdventOfCode
 {
     interface IDay
     {
-        void Day1();
+        void Part1();
 
-        void Day2();
+        void Part2();
 
         void TestCases();
+
+        void Test(string input, string output);
     }
 }

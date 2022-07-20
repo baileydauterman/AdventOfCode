@@ -11,33 +11,82 @@ namespace AdventOfCode.Day4
     {
         public Day4()
         {
-            Input = "ckczppom";
+            Input = string.Empty;
+            Value = 0;
+            Hash = string.Empty;
+            ValueStr = string.Empty;
         }
 
         public string Hash { get; set; }
         public string Input { get; set; }
+        public int Value { get; set; }
+        public string ValueStr { get; set; }
 
-        public void ComputeHash()
+        public void Part1()
         {
-            using (MD5 md5 = MD5.Create() )
-            {
+            Start();
 
+            Input = "ckczppom";
+            while (!Hash.StartsWith("00000"))
+            {
+                ComputeHash();
+                Value++;
             }
         }
 
-        public void Day1()
+        public void Part2()
         {
-            throw new NotImplementedException();
-        }
+            Start();
 
-        public void Day2()
-        {
-            throw new NotImplementedException();
+            Input = "ckczppom";
+            while (!Hash.StartsWith("000000"))
+            {
+                ComputeHash();
+                Value++;
+            }
         }
 
         public void TestCases()
         {
-            throw new NotImplementedException();
+            Test("abcdef", "abcdef609043");
+            Test("pqrstuv", "pqrstuv1048970");
         }
+
+        public void Test(string input, string output)
+        {
+            Start();
+
+            Input = input;
+            while (!Hash.StartsWith("00000"))
+            {
+                ComputeHash();
+                Value++;
+            }
+            if (!output.Equals(ValueStr)) throw new Exception($"Test Case Failed: \n\tGot {ValueStr}\n\tExpected {output}");
+        }
+
+        private void ComputeHash()
+        {
+            ValueStr = Input + Value.ToString();
+
+            using (MD5 md5 = MD5.Create())
+            {
+                byte[] hash = md5.ComputeHash(Encoding.ASCII.GetBytes(ValueStr));
+                Hash = Convert.ToHexString(hash);
+            }
+        }
+
+        private void Start()
+        {
+            Value = 0;
+            Hash = string.Empty;
+            ValueStr = string.Empty;
+        }
+
+        private Dictionary<int, int> Answers = new Dictionary<int, int>()
+        {
+            { 1, 117946 },
+            { 2, 3938038 },
+        };
     }
 }
