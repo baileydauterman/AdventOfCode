@@ -1,155 +1,98 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-// ---Day 1: Sonar Sweep ---
-// You're minding your own business on a ship at sea when the overboard alarm goes off! You rush to see if you can help. Apparently, one of the Elves tripped and accidentally
-// sent the sleigh keys flying into the ocean!
-   
-// Before you know it, you're inside a submarine the Elves keep ready for situations like this. It's covered in Christmas lights (because of course it is),
-// and it even has an experimental antenna that should be able to track the keys if you can boost its signal strength high enough; there 's a little meter that
-// indicates the antenna's signal strength by displaying 0-50 stars.
-   
-// Your instincts tell you that in order to save Christmas, you'll need to get all fifty stars by December 25th.
-   
-// Collect stars by solving puzzles. Two puzzles will be made available on each day in the Advent calendar; the second puzzle is unlocked when you complete the first.
-// Each puzzle grants one star. Good luck!
-   
-// As the submarine drops below the surface of the ocean, it automatically performs a sonar sweep of the nearby sea floor. On a small screen, the sonar sweep report
-// (your puzzle input) appears: each line is a measurement of the sea floor depth as the sweep looks further and further away from the submarine.
-   
-// For example, suppose you had the following report:
-   
-// 199
-// 200
-// 208
-// 210
-// 200
-// 207
-// 240
-// 269
-// 260
-// 263
-// This report indicates that, scanning outward from the submarine, the sonar sweep found depths of 199, 200, 208, 210, and so on.
-   
-// The first order of business is to figure out how quickly the depth increases, just so you know what you're dealing with - you never know if the keys will get carried
-// into deeper water by an ocean current or a fish or something.
-   
-// To do this, count the number of times a depth measurement increases from the previous measurement. (There is no measurement before the first measurement.) In the example
-// above, the changes are as follows:
-   
-// 199(N / A - no previous measurement)
-// 200(increased)
-// 208(increased)
-// 210(increased)
-// 200(decreased)
-// 207(increased)
-// 240(increased)
-// 269(increased)
-// 260(decreased)
-// 263(increased)
-// In this example, there are 7 measurements that are larger than the previous measurement.
-   
-// How many measurements are larger than the previous measurement?
-
-namespace AdventOfCode
+﻿namespace AdventOfCode
 {
     internal class Day1
     {
+        public int Floor { get; set; }
+        public string Data { get; set; }
 
-        public static int SonarSweepPart1()
+        public Day1()
         {
-            var data = File.ReadLines("../../../Day1/input.txt");
-            int increase = 0;
-            int total = 0;
-            int temp = 0;
-            
-            foreach(var line in data)
-            {
-                if (total == 0)
-                {
-                    temp = Int32.Parse(line);
-                    total++;
-                    continue;
-                }
-
-                int current = Int32.Parse(line);
-
-                if(current > temp)
-                {
-                    increase++;
-                }
-
-                temp = current;
-            }
-
-            return increase;
+            Floor = 0;
+            Data = File.ReadAllText("../../../Day1/input.txt");
         }
 
-        // ---Part Two-- -
-        // Considering every single measurement isn't as useful as you expected: there's just too much noise in the data.
+        // ---Day 1: Not Quite Lisp ---
+        // Santa was hoping for a white Christmas, but his weather machine's "snow" function is powered by stars, and he's fresh out! To save Christmas,
+        // he needs you to collect fifty stars by December 25th.
 
-        // Instead, consider sums of a three-measurement sliding window. Again considering the above example:
+        // Collect stars by helping Santa solve puzzles. Two puzzles will be made available on each day in the Advent calendar;
+        // the second puzzle is unlocked when you complete the first. Each puzzle grants one star. Good luck!
 
-        // 199  A
-        // 200  A B    
-        // 208  A B C  
-        // 210    B C D
-        // 200  E   C D
-        // 207  E F   D
-        // 240  E F G  
-        // 269    F G H
-        // 260      G H
-        // 263        H
-        // Start by comparing the first and second three-measurement windows. The measurements in the first window are marked A
-        // (199, 200, 208); their sum is 199 + 200 + 208 = 607. The second window is marked B (200, 208, 210); its sum is 618.
-        // The sum of measurements in the second window is larger than the sum of the first, so this first comparison increased.
+        // Here's an easy puzzle to warm you up.
 
-        // Your goal now is to count the number of times the sum of measurements in this sliding window increases from the previous
-        // sum. So, compare A with B, then compare B with C, then C with D, and so on. Stop when there aren't enough measurements
-        // left to create a new three-measurement sum.
+        // Santa is trying to deliver presents in a large apartment building, but he can't find the right floor - the directions he got are a little confusing.
+        // He starts on the ground floor (floor 0) and then follows the instructions one character at a time.
 
-        // In the above example, the sum of each three-measurement window is as follows:
+        // An opening parenthesis, (, means he should go up one floor, and a closing parenthesis, ), means he should go down one floor.
 
-        // A: 607(N / A - no previous sum)
-        // B: 618(increased)
-        // C: 618(no change)
-        // D: 617(decreased)
-        // E: 647(increased)
-        // F: 716(increased)
-        // G: 769(increased)
-        // H: 792(increased)
-        // In this example, there are 5 sums that are larger than the previous sum.
+        // The apartment building is very tall, and the basement is very deep; he will never find the top or bottom floors.
 
-        // Consider sums of a three-measurement sliding window.How many sums are larger than the previous sum?
-        public static int SonarSweepPart2()
+        // For example:
+
+        // (()) and()() both result in floor 0.
+        // ((( and (()(()(both result in floor 3.
+        // ))(((((also results in floor 3.
+        // ()) and ))(both result in floor - 1(the first basement level).
+        // ))) and )())()) both result in floor -3.
+        // To what floor do the instructions take Santa?
+
+        public int Part1()
         {
-            var data = File.ReadLines("../../../Day1/input.txt");
-            Queue<int> q = new Queue<int>();
-            int windowSize = 3;
-            int slidingSum = 0;
-            int prevSum = 0;
-            int increase = 0;
-
-            foreach (string line in data)
+            foreach (var c in Data)
             {
-                int curr = int.Parse(line);
-                slidingSum += curr;
-                q.Enqueue(curr);
-                if (q.Count == windowSize)
+                ChangeFloor(c);
+            }
+
+            return Floor;
+        }
+
+        // --- Part Two ---
+        //  Now, given the same instructions, find the position of the first character that causes him to enter the basement(floor -1).
+        //  The first character in the instructions has position 1, the second character has position 2, and so on.
+
+        //  For example:
+
+        //  ) causes him to enter the basement at character position 1.
+        //  () ()) causes him to enter the basement at character position 5.
+        //  What is the position of the character that causes Santa to first enter the basement?
+        public int Part2()
+        {
+            int index = 0;
+            foreach (var c in Data)
+            {
+                ChangeFloor(c);
+                index++;
+
+                if (Floor == -1)
                 {
-                    if (slidingSum > prevSum && prevSum != 0)
-                    {
-                        increase++;
-                    }
-                    prevSum = slidingSum;
-                    slidingSum -= q.Dequeue();
+                    return index;
                 }
             }
 
-            return increase;
+            return 0;
         }
+
+        private void ChangeFloor(char c)
+        {
+            switch (c)
+            {
+                case '(':
+                    Floor++;
+                    break;
+
+                case ')':
+                    Floor--;
+                    break;
+
+                default:
+                    throw new Exception($"Incorrect character: {c}");
+            }
+        }
+
+        private readonly Dictionary<int, int> Answers = new Dictionary<int, int>()
+        {
+            { 1, 232 },
+            { 2, 1783 }
+        };
     }
 }

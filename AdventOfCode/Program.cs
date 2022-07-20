@@ -1,25 +1,26 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using AdventOfCode;
+using AdventOfCode.Day2;
+using AdventOfCode.Day3;
 
-Console.WriteLine("########### Day 1 ##############");
-Console.WriteLine($"Increases (1.1):\t{Day1.SonarSweepPart1()}");
-Console.WriteLine($"Increases (1.2):\t{Day1.SonarSweepPart2()}");
-Console.WriteLine();
+Console.WriteLine("--- Day 1 ---");
+Console.WriteLine(new Day1().Part1());
+Console.WriteLine(new Day1().Part2());
 
+Console.WriteLine("--- Day 2 ---");
+var day2 = new Day2();
+day2.TestCase();
+day2.Part1();
+Console.WriteLine(day2.TotalWrappingPaper);
+Console.WriteLine(day2.TotalRibbonLength);
 
-Console.WriteLine("########### Day 2 ##############");
-var outp = Day2.DivePart1();
-var answer = outp[0] * outp[1];
-Console.WriteLine($"Increases (2.1):\t{answer}([ {outp[0]}, {outp[1]} ])");
-outp = Day2.DivePart2();
-answer = outp[0] * outp[1];
-Console.WriteLine($"Increases (2.1):\t{answer}([ {outp[0]}, {outp[1]}, {outp[2]} ])");
-Console.WriteLine();
+Console.WriteLine("--- Day 3 ---");
+var day3 = new Day3();
+day3.TestCases();
+day3.Part1();
+Console.WriteLine(day3.UniqueHouses);
+day3.Part2();
+Console.WriteLine(day3.UniqueHouses);
 
-
-Console.WriteLine("########### Day 3 ##############");
-var day3 = Day3.BinaryDiagnosticPart1();
-Console.WriteLine($"Increases (2.1): ([ {day3[0]}, {day3[1]} ])");
-var day31 = Day3.BinaryDiagnosticPart2();
-Console.WriteLine($"Increases (2.1): {day31[0] * day31[1]} ([ {day31[0]}, {day31[1]} ])");
-Console.WriteLine();
+Console.WriteLine("--- Day 4 ---");
+var day4 = new Day4();
