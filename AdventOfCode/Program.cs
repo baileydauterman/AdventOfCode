@@ -3,6 +3,7 @@ using AdventOfCode;
 using AdventOfCode.Day2;
 using AdventOfCode.Day3;
 using AdventOfCode.Day4;
+using AdventOfCode.Day5;
 
 Console.WriteLine("--- Day 1 ---");
 Console.WriteLine(new Day1().Part1());
@@ -31,3 +32,12 @@ day4.Part1();
 Console.WriteLine(day4.ValueStr);
 day4.Part2();
 Console.WriteLine(day4.ValueStr);
+
+Console.WriteLine("--- Day 5 ---");
+var day5 = new Day5();
+day5.TestCases();
+
+day5.Part1();
+Console.WriteLine(day5.ValidStrings);
+day5.Part2();
+Console.WriteLine(day5.ValidStrings);

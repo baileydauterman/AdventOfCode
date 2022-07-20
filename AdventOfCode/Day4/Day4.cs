@@ -22,7 +22,7 @@ namespace AdventOfCode.Day4
         public int Value { get; set; }
         public string ValueStr { get; set; }
 
-        public void Part1()
+        public override void Part1()
         {
             Start();
 
@@ -34,7 +34,7 @@ namespace AdventOfCode.Day4
             }
         }
 
-        public void Part2()
+        public override void Part2()
         {
             Start();
 
@@ -46,13 +46,13 @@ namespace AdventOfCode.Day4
             }
         }
 
-        public void TestCases()
+        public override void TestCases()
         {
             Test("abcdef", "abcdef609043");
             Test("pqrstuv", "pqrstuv1048970");
         }
 
-        public void Test(string input, string output)
+        public override void Test(string input, string output)
         {
             Start();
 
@@ -81,6 +81,11 @@ namespace AdventOfCode.Day4
             Value = 0;
             Hash = string.Empty;
             ValueStr = string.Empty;
+        }
+
+        public override void Test(string input, bool expected)
+        {
+            throw new NotImplementedException();
         }
 
         private Dictionary<int, int> Answers = new Dictionary<int, int>()

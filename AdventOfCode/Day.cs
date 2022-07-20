@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace AdventOfCode
 {
-    interface IDay
+    abstract class IDay
     {
-        void Part1();
+        public abstract void Part1();
 
-        void Part2();
+        public abstract void Part2();
 
-        void TestCases();
+        public abstract void TestCases();
 
-        void Test(string input, string output);
+        public abstract void Test(string input, string output);
+        public abstract void Test(string input, bool expected);
     }
 }
