@@ -21,4 +21,7 @@ Assert.AreEqual(Day3.GetBadgeNum("../../../Day3/input.test2"), 70);
 Assert.AreEqual(Day3.GetBadgeNum("../../../Day3/input.prod"), 2444);
 
 // -- Day 4 --
+Assert.AreEqual(Day4.CheckSections("../../../Day4/input.test"), 2);
 
+Assert.AreEqual(Day4.CheckSections("../../../Day4/input.prod"), 431);
+Assert.AreEqual(Day4.CheckSectionsAny("../../../Day4/input.prod"), 823);
