@@ -25,3 +25,11 @@ Assert.AreEqual(Day4.CheckSections("../../../Day4/input.test"), 2);
 
 Assert.AreEqual(Day4.CheckSections("../../../Day4/input.prod"), 431);
 Assert.AreEqual(Day4.CheckSectionsAny("../../../Day4/input.prod"), 823);
+
+
+// -- Day 5 -- 
+Assert.AreEqual(new Day5().CrateMover9000("../../../Day5/input.test", new Day5().test), "CMZ");
+Assert.AreEqual(new Day5().CrateMover9000("../../../Day5/input.prod", new Day5().prod), "FWNSHLDNZ");
+
+Assert.AreEqual(new Day5().CrateMover9001("../../../Day5/input.test", new Day5().test), "MCD");
+Assert.AreEqual(new Day5().CrateMover9001("../../../Day5/input.prod", new Day5().prod), "");
