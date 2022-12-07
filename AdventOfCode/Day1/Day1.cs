@@ -23,6 +23,11 @@
                         temp = 0;
                     }
                 }
+
+                if (temp > 0)
+                {
+                    nums.Add(temp);
+                }
             }
 
             return nums;

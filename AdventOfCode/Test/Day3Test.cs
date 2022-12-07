@@ -4,18 +4,21 @@ namespace AdventOfCode.Test
 {
     internal class Day3Test : ITest
     {
+        public string TestPath { get; set; } = "../../../Day3/input.test";
+        public string ProdPath { get; set; } = "../../../Day3/input.prod";
+
         [Test]
         public void Test()
         {
-            Assert.AreEqual(Day3.GetPriority("../../../Day3/input.test"), 157);
-            Assert.AreEqual(Day3.GetBadgeNum("../../../Day3/input.test2"), 70);
+            Assert.AreEqual(157, Day3.GetPriority(TestPath));
+            Assert.AreEqual(70, Day3.GetBadgeNum("../../../Day3/input.test2"));
         }
 
         [Test]
         public void Prod()
         {
-            Assert.AreEqual(Day3.GetPriority("../../../Day3/input.prod"), 7817);
-            Assert.AreEqual(Day3.GetBadgeNum("../../../Day3/input.prod"), 2444);
+            Assert.AreEqual(7817, Day3.GetPriority(ProdPath));
+            Assert.AreEqual(2444, Day3.GetBadgeNum(ProdPath));
         }
     }
 }

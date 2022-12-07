@@ -4,17 +4,20 @@ namespace AdventOfCode.Test
 {
     internal class Day2Test : ITest
     {
+        public string TestPath { get; set; } = "../../../Day2/input.test";
+        public string ProdPath { get; set; } = "../../../Day2/input.prod";
+
         [Test]
         public void Test()
         {
-            Assert.AreEqual(Day2.ReadFile("../../../Day2/input.test").Select(f => f.Score).Sum(), 15);
+            Assert.AreEqual(15, Day2.ReadFile(TestPath).Select(f => f.Score).Sum());
         }
 
         [Test]
         public void Prod()
         {
-            Assert.AreEqual(Day2.ReadFile("../../../Day2/input.prod").Select(f => f.Score).Sum(), 13052);
-            Assert.AreEqual(Day2.ReadFileCorrectly("../../../Day2/input.prod").Select(f => f.Score).Sum(), 13693);
+            Assert.AreEqual(13052, Day2.ReadFile(ProdPath).Select(f => f.Score).Sum());
+            Assert.AreEqual(13693, Day2.ReadFileCorrectly(ProdPath).Select(f => f.Score).Sum());
         }
     }
 }

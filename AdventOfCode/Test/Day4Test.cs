@@ -4,17 +4,21 @@ namespace AdventOfCode.Test
 {
     internal class Day4Test : ITest
     {
+        public string TestPath { get; set; } = "../../../Day4/input.test";
+
+        public string ProdPath { get; set; } = "../../../Day4/input.prod";
+
         [Test]
         public void Test()
         {
-            Assert.AreEqual(Day4.CheckSections("../../../Day4/input.test"), 2);
+            Assert.AreEqual(2, Day4.CheckSections(TestPath));
         }
 
         [Test]
         public void Prod()
         {
-            Assert.AreEqual(Day4.CheckSections("../../../Day4/input.prod"), 431);
-            Assert.AreEqual(Day4.CheckSectionsAny("../../../Day4/input.prod"), 823);
+            Assert.AreEqual(431, Day4.CheckSections(ProdPath));
+            Assert.AreEqual(823, Day4.CheckSectionsAny(ProdPath));
         }
     }
 }
