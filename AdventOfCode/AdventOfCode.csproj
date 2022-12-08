@@ -21,6 +21,7 @@
     <None Remove="Day5\input.prod" />
     <None Remove="Day5\input.test" />
     <None Remove="Day6\input.prod" />
+    <None Remove="Day7\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -48,4 +49,7 @@
     <Resource Include="Day6\input.prod" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Day7\" />
+  </ItemGroup>
 </Project>
