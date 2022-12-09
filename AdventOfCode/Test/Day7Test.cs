@@ -1,5 +1,5 @@
 ﻿using NUnit.Framework;
-using System;
+
 namespace AdventOfCode.Test
 {
 	public class Day7Test : ITest
