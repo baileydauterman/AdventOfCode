@@ -8,6 +8,11 @@ namespace AdventOfCode
         public int Size { get; set; }
 
         public EFileType FileType { get; set; }
+
+        public string ToString()
+        {
+            return $"{Size} {FullName} ({FileType})";
+        }
     }
 }
 
