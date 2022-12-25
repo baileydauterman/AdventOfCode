@@ -1,6 +1,6 @@
 ﻿namespace AdventOfCode
 {
-    internal class Day6
+    public class Day6
     {
 
         public static int FindMarker(string path)

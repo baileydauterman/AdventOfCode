@@ -1,6 +1,6 @@
 ﻿namespace AdventOfCode
 {
-    internal class Day1
+    public class Day1
     {
 
         public static List<int> CalorieCounter(string path)

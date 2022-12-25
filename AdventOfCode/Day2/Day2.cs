@@ -1,8 +1,6 @@
-﻿using static AdventOfCode.Day2;
-
-namespace AdventOfCode
+﻿namespace AdventOfCode
 {
-    internal class Day2
+    public class Day2
     {
         public enum Moves
         {

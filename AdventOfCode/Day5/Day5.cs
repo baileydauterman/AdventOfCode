@@ -1,12 +1,10 @@
-﻿using System.IO;
-using System.Runtime.ExceptionServices;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace AdventOfCode
 {
-    internal class Day5
+    public class Day5
     {
-        public List<Stack<char>> prod = new List<Stack<char>>
+        public List<Stack<char>> prodChars = new List<Stack<char>>
         {
             new Stack<char>(new[] { 'D', 'M', 'S', 'Z', 'R', 'F', 'W', 'N' }),
             new Stack<char>(new[] { 'W', 'P', 'Q', 'G', 'S' }),
@@ -19,7 +17,7 @@ namespace AdventOfCode
             new Stack<char>(new[] { 'R', 'M', 'S', 'G', 'Z', 'W', 'V' }),
         };
 
-        public List<Stack<char>> test = new List<Stack<char>>
+        public readonly List<Stack<char>> testChars = new List<Stack<char>>
         {
             new Stack<char>(new[] { 'Z', 'N' }),
             new Stack<char>(new[] { 'M', 'C', 'D'}),
@@ -33,13 +31,17 @@ namespace AdventOfCode
             {
                 while (!reader.EndOfStream)
                 {
-                    MoveCrates(reader.ReadLine(), boxes);
+                    var line = reader.ReadLine();
+                    if (line is null)
+                    {
+                        break;
+                    }
+
+                    MoveCrates(line, boxes);
                 }
             }
 
-            var temp = string.Join("", boxes.Select(r => r.Peek().ToString()));
-
-            return temp;
+            return string.Join("", boxes.Select(r => r.Peek().ToString()));
         }
 
         public string CrateMover9001(string path, List<Stack<char>> boxes)
@@ -53,9 +55,7 @@ namespace AdventOfCode
                 }
             }
 
-            var temp = string.Join("", boxes.Select(r => r.Peek().ToString()));
-
-            return temp;
+            return string.Join("", boxes.Select(r => r.Peek().ToString()));
         }
 
         private void MoveCrates(string str, List<Stack<char>> boxes)
@@ -80,7 +80,10 @@ namespace AdventOfCode
 
             for (var i = 0; i < int.Parse(match.Groups["count"].Value); i++)
             {
-                temp.Push(boxes[source].Pop());
+                if (boxes[source].TryPop(out var c))
+                {
+                    temp.Push(c);
+                }
             }
 
             while (temp.Count != 0)

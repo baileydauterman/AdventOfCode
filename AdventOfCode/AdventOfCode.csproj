@@ -9,18 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Day1\input.prod" />
-    <None Remove="Day1\input.test" />
-    <None Remove="Day2\input.prod" />
-    <None Remove="Day2\input.test" />
-    <None Remove="Day3\input.prod" />
-    <None Remove="Day3\input.test" />
-    <None Remove="Day3\input.test2" />
-    <None Remove="Day4\input.prod" />
-    <None Remove="Day4\input.test" />
-    <None Remove="Day5\input.prod" />
-    <None Remove="Day5\input.test" />
-    <None Remove="Day6\input.prod" />
     <None Remove="Day7\" />
   </ItemGroup>
 
@@ -30,23 +18,6 @@
     <PackageReference Include="NUnit3TestAdapter" Version="4.3.1" />
     <PackageReference Include="System.IO" Version="4.3.0" />
     <PackageReference Include="System.Runtime" Version="4.3.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Day1\input.prod">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Day1\input.test" />
-    <Resource Include="Day2\input.prod" />
-    <Resource Include="Day2\input.test" />
-    <Resource Include="Day3\input.prod" />
-    <Resource Include="Day3\input.test" />
-    <Resource Include="Day3\input.test2" />
-    <Resource Include="Day4\input.prod" />
-    <Resource Include="Day4\input.test" />
-    <Resource Include="Day5\input.prod" />
-    <Resource Include="Day5\input.test" />
-    <Resource Include="Day6\input.prod" />
   </ItemGroup>
 
   <ItemGroup>

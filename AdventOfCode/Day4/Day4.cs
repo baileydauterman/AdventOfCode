@@ -1,6 +1,6 @@
 ﻿namespace AdventOfCode
 {
-    internal class Day4
+    public class Day4
     {
 
         public static int CheckSections(string path)

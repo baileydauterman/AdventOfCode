@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AdventOfCode
 {
-    internal class Day3
+    public class Day3
     {
         public static Dictionary<char, int> priorityDict = new Dictionary<char, int>
     {
