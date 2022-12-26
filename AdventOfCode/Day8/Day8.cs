@@ -131,7 +131,8 @@ namespace AdventOfCode
                 trees = trees.Reverse().ToArray();
             }
 
-            var output = 1;
+            var output = 1
+                ;
 
             foreach (var t in trees)
             {
