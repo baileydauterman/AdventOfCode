@@ -27,6 +27,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Day9\" />
+    <None Remove="Day10\" />
+    <None Remove="Day11\" />
+    <None Remove="Day12\" />
+  </ItemGroup>
+  <ItemGroup>
     <None Update="Day1\i.prod">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -75,6 +81,24 @@
     <None Update="Day8\i.test">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Day9\I.test">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Day9\I.prod">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Day10\i.test">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Day10\I.prod">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Day9\" />
+    <Folder Include="Day10\" />
+    <Folder Include="Day11\" />
+    <Folder Include="Day12\" />
+  </ItemGroup>
 </Project>

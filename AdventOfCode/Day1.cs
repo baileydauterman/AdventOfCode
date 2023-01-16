@@ -43,9 +43,8 @@
             var nums = CalorieCounter(path);
 
             nums.Sort();
-            nums.Reverse();
 
-            return nums.Take(3).Sum();
+            return nums.Skip(nums.Count - 3).Take(3).Sum();
         }
     }
 }
