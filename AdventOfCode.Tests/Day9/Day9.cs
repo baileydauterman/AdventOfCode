@@ -4,8 +4,6 @@ namespace AdventOfCode.Tests
 {
 	public class Day9
 	{
-		// Works mostly, but my algorithm is moving the Tail too much
-		// returning 24 instead of 13
 		[Test]
 		public void Test()
 		{

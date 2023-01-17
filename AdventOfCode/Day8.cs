@@ -65,19 +65,19 @@ namespace AdventOfCode
 
                     // Take all the elements up to the current tree
                     // Only takes trees that are taller than the current tree
-                    var left = trees[row].Take(tree).Where(t => t >= current).ToArray();
+                    var left = trees[row].Take(tree).Where(t => t >= current).Count();
 
                     // Take all the elements from current tree to end
-                    var right = trees[row].Skip(tree + 1).Take(trees[row].Count - tree + 1).Where(t => t >= current).ToArray();
+                    var right = trees[row].Skip(tree + 1).Take(trees[row].Count - tree + 1).Where(t => t >= current).Count();
 
                     // Take all the trees in the same column up to the current
-                    var above = trees.Take(row).Select(t => t[tree]).Where(t => t >= current).ToArray();
+                    var above = trees.Take(row).Select(t => t[tree]).Where(t => t >= current).Count();
 
                     // Take all the trees in the same column from current tree to the end
-                    var below = trees.Skip(row + 1).Take(trees.Count - row + 1).Select(t => t[tree]).Where(t => t >= current).ToArray();
+                    var below = trees.Skip(row + 1).Take(trees.Count - row + 1).Select(t => t[tree]).Where(t => t >= current).Count();
 
                     // If any of these are 0 the tree is visible
-                    if (left.Length == 0 || right.Length == 0 || above.Length == 0 || below.Length == 0)
+                    if (left == 0 || right == 0 || above == 0 || below == 0)
                     {
                         visibleTrees += 1;
                     }
@@ -131,8 +131,7 @@ namespace AdventOfCode
                 trees = trees.Reverse().ToArray();
             }
 
-            var output = 1
-                ;
+            var output = 1;
 
             foreach (var t in trees)
             {
