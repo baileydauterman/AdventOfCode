@@ -8,7 +8,7 @@ namespace AdventOfCode.Tests
         [Test]
         public void Test()
         {
-            var path = Common.BuildPath("Day3", Common.DataType.Test);
+            var path = Common.BuildPath("3", Common.DataType.Test);
 
             Assert.That(AdventOfCode.Day3.GetPriority(path), Is.EqualTo(157));
             Assert.That(AdventOfCode.Day3.GetBadgeNum(path), Is.EqualTo(70));
@@ -17,7 +17,7 @@ namespace AdventOfCode.Tests
         [Test]
         public void Prod()
         {
-            var path = Common.BuildPath("Day3", Common.DataType.Prod);
+            var path = Common.BuildPath("3", Common.DataType.Prod);
 
             Assert.That(AdventOfCode.Day3.GetPriority(path), Is.EqualTo(7817));
             Assert.That(AdventOfCode.Day3.GetBadgeNum(path), Is.EqualTo(2444));

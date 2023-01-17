@@ -8,9 +8,9 @@
             switch (type)
             {
                 case DataType.Prod:
-                    return Path.Combine(".", "data", $"{day}.prod");
+                    return Path.Combine(".", "data", "day", day, "prod");
                 case DataType.Test:
-                    return Path.Combine(".", "data", $"{day}.test");
+                    return Path.Combine(".", "data", "day", day, "test");
             }
 
             return string.Empty;
