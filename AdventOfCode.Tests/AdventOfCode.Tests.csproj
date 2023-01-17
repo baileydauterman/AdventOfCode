@@ -33,25 +33,22 @@
     <None Remove="Day12\" />
   </ItemGroup>
   <ItemGroup>
-    <None Update="Day1\i.prod">
+    <None Update="data\Day1.prod">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Day1\i.test">
+    <None Update="data\Day1.test">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Day2\i.prod">
+    <None Update="data\Day2.prod">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Day2\i.test">
+    <None Update="data\Day2.test">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Day3\i.prod">
+    <None Update="data\Day3.prod">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Day3\i.test">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Day3\i.test2">
+    <None Update="data\Day3.test">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Day4\i.prod">
