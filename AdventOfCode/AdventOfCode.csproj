@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Platforms>AnyCPU;x64</Platforms>
@@ -20,6 +20,7 @@
     <None Remove="objects\" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="2022/" />
     <Folder Include="objects\" />
   </ItemGroup>
   <ItemGroup>
