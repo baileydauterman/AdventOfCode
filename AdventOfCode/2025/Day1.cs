@@ -57,7 +57,6 @@ public class Dial
         if (Position == 0)
         {
             Password1++;
-            // Password2++;
         }
     }
 
@@ -70,6 +69,10 @@ public class Dial
             if (Position > _maxPosition)
             {
                 Position = _minPosition;
+            }
+
+            if (Position == 0)
+            {
                 Password2++;
             }
         }
@@ -84,11 +87,16 @@ public class Dial
             if (Position < _minPosition)
             {
                 Position = _maxPosition;
+            }
+
+            if (Position == 0)
+            {
                 Password2++;
             }
         }
     }
 
     private int _maxPosition { get;  set; }
+
     private int _minPosition { get;  set; }
 }
