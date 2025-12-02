@@ -5,7 +5,7 @@
         [Test]
         public void Test()
         {
-            var path = Common.BuildPath("5", Common.DataType.Test);
+            var path = Common.BuildPath(2022, 5, Common.DataType.Test);
 
             var runner = new AdventOfCode.Day5();
 
@@ -18,7 +18,7 @@
         [Test]
         public void Prod()
         {
-            var path = Common.BuildPath("5", Common.DataType.Prod);
+            var path = Common.BuildPath(2022, 5, Common.DataType.Prod);
 
             var runner = new AdventOfCode.Day5();
 

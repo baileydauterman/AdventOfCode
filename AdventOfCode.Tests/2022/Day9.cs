@@ -7,7 +7,7 @@ namespace AdventOfCode.Tests
 		[Test]
 		public void Test()
 		{
-			var path = Common.BuildPath("9", Common.DataType.Test);
+			var path = Common.BuildPath(2022, 9, Common.DataType.Test);
 
 			Assert.That(new AdventOfCode.Day9().ParseFile(path), Is.EqualTo(13));
 		}
@@ -15,7 +15,7 @@ namespace AdventOfCode.Tests
 		[Test]
 		public void Prod()
 		{
-			var path = Common.BuildPath("9", Common.DataType.Prod);
+			var path = Common.BuildPath(2022, 9, Common.DataType.Prod);
 
             Assert.That(new AdventOfCode.Day9().ParseFile(path), Is.EqualTo(10289));
         }

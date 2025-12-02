@@ -15,7 +15,7 @@ namespace AdventOfCode.Tests
 		public void Test()
 		{
 			MakeQueue();
-			var path = Common.BuildPath("10", Common.DataType.Test);
+			var path = Common.BuildPath(2022, 10, Common.DataType.Test);
 
 			Assert.That(new AdventOfCode.Day10().ParseFile(path, priorityTicks), Is.EqualTo(13140));
 		}
@@ -24,7 +24,7 @@ namespace AdventOfCode.Tests
 		public void Prod()
 		{
 			MakeQueue();
-			var path = Common.BuildPath("10", Common.DataType.Prod);
+			var path = Common.BuildPath(2022, 10, Common.DataType.Prod);
 
             Assert.That(new AdventOfCode.Day10().ParseFile(path, priorityTicks), Is.EqualTo(16480));
         }

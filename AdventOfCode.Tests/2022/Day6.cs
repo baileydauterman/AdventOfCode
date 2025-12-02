@@ -20,7 +20,7 @@
         [Test]
         public void Prod()
         {
-            var path = Common.BuildPath("6", Common.DataType.Prod);
+            var path = Common.BuildPath(2022, 6, Common.DataType.Prod);
 
             Assert.That(AdventOfCode.Day6.FindMarker(path), Is.EqualTo(1658));
             Assert.That(AdventOfCode.Day6.FindMessage(path), Is.EqualTo(2260));
