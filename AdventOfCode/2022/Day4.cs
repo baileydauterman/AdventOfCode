@@ -49,6 +49,11 @@
 
         private static (IEnumerable<int>, IEnumerable<int>) GenerateRanges(string? str)
         {
+            if (str is null)
+            {
+                throw new InvalidOperationException("Input string cannot be null");
+            }
+
             var elves = str.Split(",");
             var first = elves[0].Split("-").Select(int.Parse).ToList();
             var second = elves[1].Split("-").Select(int.Parse).ToList();

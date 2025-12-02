@@ -16,17 +16,17 @@
             return string.Empty;
         }
 
-        public static string BuildPath(string year, string day, DataType type)
+        public static string BuildPath(int year, int day, DataType type)
         {
             switch (type)
             {
                 case DataType.Prod:
-                    return Path.Combine(".", "data", year, day, "prod");
+                    return Path.Combine(".", "data", year.ToString(), day.ToString(), "prod");
                 case DataType.Test:
-                    return Path.Combine(".", "data", year, day, "test");
+                    return Path.Combine(".", "data", year.ToString(), day.ToString(), "test");
+                default:
+                    return string.Empty;
             }
-
-            return string.Empty;
         }
 
         public enum DataType

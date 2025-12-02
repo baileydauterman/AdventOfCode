@@ -27,7 +27,7 @@ namespace AdventOfCode
             {
                 while (!reader.EndOfStream)
                 {
-                    var trees = reader.ReadLine();
+                    var trees = reader.ReadLine()!;
                     var row = new List<int>();
 
                     foreach (var tree in trees)

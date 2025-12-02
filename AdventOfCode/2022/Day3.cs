@@ -117,7 +117,7 @@ namespace AdventOfCode
                 {
                     for (var i = 0; i < 3; i++)
                     {
-                        foreach (var c in reader.ReadLine().Distinct())
+                        foreach (var c in reader.ReadLine()!.Distinct())
                         {
                             if (badges.ContainsKey(c))
                             {

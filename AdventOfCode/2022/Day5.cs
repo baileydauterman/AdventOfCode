@@ -51,7 +51,7 @@ namespace AdventOfCode
             {
                 while (!reader.EndOfStream)
                 {
-                    MoveCrates9001(reader.ReadLine(), boxes);
+                    MoveCrates9001(reader.ReadLine()!, boxes);
                 }
             }
 

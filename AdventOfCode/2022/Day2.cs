@@ -36,7 +36,7 @@
             {
                 while (!reader.EndOfStream)
                 {
-                    var roundMoves = reader.ReadLine().Split(" ").ToArray();
+                    var roundMoves = reader.ReadLine()!.Split(" ").ToArray();
 
                     var round = new Round
                     {
@@ -63,7 +63,7 @@
             {
                 while (!reader.EndOfStream)
                 {
-                    var roundMoves = reader.ReadLine().Split(" ").ToArray();
+                    var roundMoves = reader.ReadLine()!.Split(" ").ToArray();
 
                     var round = new Round
                     {
@@ -123,6 +123,7 @@
                         Results.Lose => Moves.Scissors,
                         Results.Draw => Moves.Rock,
                         Results.Win => Moves.Paper,
+                        _ => throw new NotImplementedException(),
                     };
                 case Moves.Paper:
                     return round.Results switch
@@ -130,6 +131,7 @@
                         Results.Lose => Moves.Rock,
                         Results.Draw => Moves.Paper,
                         Results.Win => Moves.Scissors,
+                        _ => throw new NotImplementedException(),
                     };
                 case Moves.Scissors:
                     return round.Results switch
@@ -137,6 +139,7 @@
                         Results.Lose => Moves.Paper,
                         Results.Draw => Moves.Scissors,
                         Results.Win => Moves.Rock,
+                        _ => throw new NotImplementedException(),
                     };
                 default:
                     throw new ArgumentOutOfRangeException(nameof(round.FirstMove));
@@ -153,6 +156,8 @@
                         Moves.Scissors => Results.Win,
                         Moves.Rock => Results.Draw,
                         Moves.Paper => Results.Lose,
+                        Moves.None => throw new NotImplementedException(),
+                        _ => throw new NotImplementedException(),
                     };
 
                 case Moves.Paper:
@@ -161,6 +166,8 @@
                         Moves.Rock => Results.Win,
                         Moves.Paper => Results.Draw,
                         Moves.Scissors => Results.Lose,
+                        Moves.None => throw new NotImplementedException(),
+                        _ => throw new NotImplementedException(),
                     };
 
                 case Moves.Scissors:
@@ -169,6 +176,8 @@
                         Moves.Paper => Results.Win,
                         Moves.Scissors => Results.Draw,
                         Moves.Rock => Results.Lose,
+                        Moves.None => throw new NotImplementedException(),
+                        _ => throw new NotImplementedException(),
                     };
 
                 default:

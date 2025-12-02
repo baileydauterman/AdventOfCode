@@ -14,7 +14,7 @@ namespace AdventOfCode
             {
                 while (!reader.EndOfStream)
                 {
-                    var line = reader.ReadLine()?.Trim().Split(" ", 2);
+                    var line = reader.ReadLine()?.Trim().Split(" ", 2)!;
                     var direction = GetDirection(line[0]);
 
                     moves.Add(new Move
