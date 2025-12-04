@@ -1,23 +1,23 @@
 ﻿namespace AdventOfCode.Tests
 {
-    internal class Day1
+    internal class Day1 : BaseDayTest
     {
-        [Test]
-        public void Test()
+        public Day1() : base(2022, 1)
         {
-            var path = Common.BuildPath(2022, 1, Common.DataType.Test);
-
-            Assert.That(AdventOfCode.Day1.Max(path), Is.EqualTo(24000));
-            Assert.That(AdventOfCode.Day1.Top3(path), Is.EqualTo(45000));
+            Part1ExpectedTestResult = 24000;
+            Part1ExpectedPuzzleResult = 69177;
+            Part2ExpectedTestResult = 45000;
+            Part2ExpectedPuzzleResult = 207456;
         }
 
-        [Test]
-        public void Prod()
+        public override int Part1Solver(Stream stream)
         {
-            var path = Common.BuildPath(2022, 1, Common.DataType.Prod);
+            return AdventOfCode.Day1.Max(stream);
+        }
 
-            Assert.That(AdventOfCode.Day1.Max(path), Is.EqualTo(69177));
-            Assert.That(AdventOfCode.Day1.Top3(path), Is.EqualTo(207456));
+        public override int Part2Solver(Stream stream)
+        {
+            return AdventOfCode.Day1.Top3(stream);
         }
     }
 }

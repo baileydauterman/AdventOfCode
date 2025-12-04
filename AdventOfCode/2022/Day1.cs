@@ -3,10 +3,10 @@
     public class Day1
     {
 
-        public static List<int> CalorieCounter(string path)
+        public static List<int> CalorieCounter(Stream stream)
         {
             var nums = new List<int>();
-            using (var stream = File.OpenRead(path))
+
             using (var reader = new StreamReader(stream))
             {
                 var temp = 0;
@@ -33,14 +33,14 @@
             return nums;
         }
 
-        public static int Max(string path)
+        public static int Max(Stream stream)
         {
-            return CalorieCounter(path).Max();
+            return CalorieCounter(stream).Max();
         }
 
-        public static int Top3(string path)
+        public static int Top3(Stream stream)
         {
-            var nums = CalorieCounter(path);
+            var nums = CalorieCounter(stream);
 
             nums.Sort();
 
